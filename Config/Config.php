@@ -18,7 +18,7 @@
 //const BASE_URL = "http://localhost/jipsafety";
 
 #URL production
-const BASE_URL = "https://jip.grupopaniagua.com/";
+const BASE_URL = "https://app.grupopaniagua.com/";
 
 
 /*----------  
