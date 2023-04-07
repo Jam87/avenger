@@ -71,7 +71,7 @@ const COIN_SEPARATOR_DECIMAL = ".";
 const DB_HOST = "82.180.174.103";
 const DB_NAME = "u558030020_avenger";
 const DB_USER = "u558030020_avenger";
-const DB_PASSWORD = "/EY09k!Y5i;";
+const DB_PASSWORD = "w|4X1ZHy*O";
 const DB_CHARSET = "charset=utf8";
 
 
