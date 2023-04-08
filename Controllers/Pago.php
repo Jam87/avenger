@@ -15,12 +15,12 @@ class Pago extends Controllers
     ### CONTROLADOR ###
     public function Pago()
     {
-        $data['page_title'] = "Jipsafety | Pagos";
-        $data['page_name'] = "Forma de Pagos";
+        $data['page_title'] = "Jipsafety | Forma de pago";
+        $data['page_name'] = "Forma de pago";
         $data['description'] = "";
         $data['breadcrumb-item'] = "Usuarios";
         $data['breadcrumb-activo'] = "Usuario";
-        $data['data-sidebar-size'] = "sm";
+
         $data['page_functions_js'] = "functions_pagos.js";
 
         #Data modal
@@ -28,13 +28,13 @@ class Pago extends Controllers
         $data['page_title_bold'] = "Estimado usuario";
         $data['descrption_modal1'] = "Los campos remarcados con";
         $data['descrption_modal2'] = "son necesarios.";
-
+        $data['data-sidebar-size'] = 'sm';
 
         #Cargo la vista(tipos). La vista esta en View - Tipos
         $this->views->getView($this, "pago", $data);
     }
 
-    ### CONTROLADOR: MOSTRAR TODOS LOS BANCOS ###
+    ### CONTROLADOR: MOSTRAR TODAS LAS FORMAS DE PAGOS ###
     public function getPagos()
     {
         #Cargo el modelo(selectBancos) 
@@ -69,8 +69,8 @@ class Pago extends Controllers
         exit();
     }
 
-    ### CONTROLADOR: GUARDAR NUEVO BANCO ###
-    public function setBanco()
+    ### CONTROLADOR: GUARDAR NUEVA FORMA DE PAGO ###
+    public function setPago()
     {
 
         if ($_POST) {
@@ -79,18 +79,18 @@ class Pago extends Controllers
             exit();*/
 
             #Capturo los datos
-            $intIdBanco = intval($_POST['idBanco']);
+            $intIdPago = intval($_POST['idPago']);
 
-            $name       = strClean($_POST['txtName']);
-            $nota       = strClean($_POST['txtDescription']);
-            $listLocal  = intval($_POST['listLocal']);
-            $status     = intval($_POST['listStatus']);
+            $descripcion = strClean($_POST['txtName']);
+            $nota        = strClean($_POST['txtDescription']);
+            $listVenta   = intval($_POST['listVenta']);
+            $status      = intval($_POST['listStatus']);
 
             #Si no viene ningun ID - Estoy creando 1 nuevo
-            if ($intIdBanco == 0) {
+            if ($intIdPago == 0) {
 
                 #Crear
-                $request_Banco = $this->model->insertBanco($name, $nota, $listLocal, $status);
+                $request_Pago = $this->model->insertPago($descripcion, $nota, $listVenta, $status);
 
                 /* dep($request_Tipo);
                   exit();*/
@@ -98,18 +98,18 @@ class Pago extends Controllers
                 $option = 1;
             } else {
                 #Actualizar
-                $request_Banco = $this->model->updateBanco($intIdBanco, $name, $nota, $listLocal, $status);
+                $request_Pago = $this->model->updatePago($intIdPago, $descripcion, $nota, $listVenta, $status);
                 $option = 2;
             }
 
             #Verificar
-            if ($request_Banco > 0) {
+            if ($request_Pago > 0) {
                 if ($option == 1) {
                     $arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
                 } else {
                     $arrResponse = array('status' => true, 'msg' => 'Datos actualizados correctamente.');
                 }
-            } else if ($request_Banco === 'existe') {
+            } else if ($request_Pago === 'existe') {
                 $arrResponse = array('status' => false, 'msg' => '¡Atención! El tipo de usuario ya existe.');
             } else {
                 $arrResponse = array('status' => true, 'msg' => 'No es posible almacenar los datos');
@@ -121,20 +121,20 @@ class Pago extends Controllers
         die();
     }
 
-    ### CONTROLADOR: ELIMINAR BANCO ###
-    public function delBanco()
+    ### CONTROLADOR: ELIMINAR FORMA DE PAGO ###
+    public function delPago()
     {
 
         if ($_POST) {
 
-            $intIdBanco = intval($_POST['cod_bancos']);
+            $intIdPago = intval($_POST['cod_pago']);
 
-            $requestDelete = $this->model->deleteBanco($intIdBanco);
+            $requestDelete = $this->model->deletePago($intIdPago);
 
             if ($requestDelete) {
-                $arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el nombre del banco');
+                $arrResponse = array('status' => true, 'msg' => 'Se ha eliminado la forma de pago');
             } else {
-                $arrResponse = array('status' => false, 'msg' => 'Error al eliminar el nombre del banco.');
+                $arrResponse = array('status' => false, 'msg' => 'Error al eliminar la forma de pago.');
             }
             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 
@@ -142,15 +142,15 @@ class Pago extends Controllers
         }
     }
 
-    ### CONTROLADOR: EDITAR BANCOS ###    
-    public function getBanco(int $idBanco)
+    ### CONTROLADOR: EDITAR FORMA DE PAGO ###    
+    public function getPago(int $idPago)
     {
 
         #id
-        $intIdBanco = intval($idBanco);
+        $intIdPago = intval($idPago);
 
-        if ($intIdBanco  > 0) {
-            $arrData = $this->model->editBanco($intIdBanco);
+        if ($intIdPago  > 0) {
+            $arrData = $this->model->editPago($intIdPago);
             if (empty($arrData)) {
                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
             } else {

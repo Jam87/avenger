@@ -4,7 +4,7 @@ class PagoModel extends Mysql
 {
     private $cod_forma_pago;
     private $descripcion;
-    private $nota_forma_pago;
+    private $nota;
     private $es_aplicado_ventas;
     private $date_registro;
     private $activo;
@@ -30,13 +30,13 @@ class PagoModel extends Mysql
     {
         $return = "";
         $this->descripcion        = $descripcion;
-        $this->nota_forma_pago    = $nota;
+        $this->nota               = $nota;
         $this->es_aplicado_ventas = $listVenta;
         $this->date_registro      = gmdate('Y-m-d H');
         $this->activo             = $status;
 
         #Sentencia
-        $sql = "SELECT * FROM cat_forma_pago WHERE descripcion = '{$this->descripcion}' ";
+        $sql = "SELECT * FROM cat_forma_Pago WHERE descripcion = '{$this->descripcion}' ";
         
         #Mando a llamar la función(select_all)
         $request = $this->select_all($sql);        
@@ -46,10 +46,10 @@ class PagoModel extends Mysql
 
         if (empty($request)) {
 
-            $sql = "INSERT INTO cat_forma_pago(descripcion, nota_forma_pago, es_aplicado_ventas, date_registro, activo) VALUE (?,?,?,?,?)";
+            $sql = "INSERT INTO cat_forma_Pago(descripcion, nota, es_aplicado_ventas, date_registro, activo) VALUE (?,?,?,?,?)";
 
             #arrData: array de información
-            $arrData = array($this->descripcion, $this->nota_forma_pago, $this->es_aplicado_ventas, $this->date_registro, $this->activo);
+            $arrData = array($this->descripcion, $this->nota, $this->es_aplicado_ventas, $this->date_registro, $this->activo);
 
             #Envio a la funcion insert(sentencia y data)
             $requestInsert = $this->insert($sql, $arrData);
@@ -69,7 +69,7 @@ class PagoModel extends Mysql
         #id
         $this->cod_forma_pago = $intIdPago;
 
-        $sql = "UPDATE cat_forma_pago SET activo = ? WHERE cod_forma_pago =  {$this->cod_forma_pago}";
+        $sql = "UPDATE cat_forma_Pago SET activo = ? WHERE cod_forma_pago =  {$this->cod_forma_pago}";
 
         $arrData = array(0);
         $request = $this->update($sql, $arrData);
@@ -88,7 +88,7 @@ class PagoModel extends Mysql
         
         //Buscar forma de pago
         $this->cod_forma_pago = $idPago;
-        $sql = "SELECT * FROM cat_forma_pago WHERE cod_forma_pago = {$this->cod_forma_pago}";
+        $sql = "SELECT * FROM cat_forma_Pago WHERE cod_forma_pago = {$this->cod_forma_pago}";
         $request = $this->select($sql);
         return $request;
     }
@@ -99,19 +99,19 @@ class PagoModel extends Mysql
 
         $this->cod_forma_pago     = $intIdPago;
         $this->descripcion        = $descripcion;
-        $this->nota_forma_pago    = $nota;
+        $this->nota               = $nota;
         $this->es_aplicado_ventas = $listVenta;
         $this->date_registro      = gmdate('Y-m-d H');;
         $this->activo             = $status;
 
 
-        $sql = "SELECT * FROM cat_forma_pago WHERE descripcion = '$this->descripcion' AND cod_forma_pago != $this->cod_forma_pago";
+        $sql = "SELECT * FROM cat_forma_Pago WHERE descripcion = '$this->descripcion' AND cod_forma_pago != $this->cod_forma_pago";
         $request = $this->select_all($sql);
 
         if(empty($request))
         {
-            $sql = "UPDATE cat_forma_pago SET descripcion = ?, 	nota_forma_pago = ?, es_aplicado_ventas = ?, date_registro = ?, activo = ? WHERE cod_forma_pago  = {$this->cod_forma_pago}";
-            $arrData = array($this->descripcion, $this->nota_forma_pago, $this->es_aplicado_ventas, $this->date_registro, $this->activo);
+            $sql = "UPDATE cat_forma_Pago SET descripcion = ?, 	nota = ?, es_aplicado_ventas = ?, date_registro = ?, activo = ? WHERE cod_forma_pago  = {$this->cod_forma_pago}";
+            $arrData = array($this->descripcion, $this->nota, $this->es_aplicado_ventas, $this->date_registro, $this->activo);
             $request = $this->update($sql,$arrData);
         }else{
             $request = "exist";

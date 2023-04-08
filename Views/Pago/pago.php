@@ -52,7 +52,8 @@ getModal('formapago', $data);
                                     <table id="table-Pago" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Descripción</th>                                             
+                                                <th>Descripción</th>  
+                                                <th>Nota</th>                                            
                                                 <th>Aplicado en venta</th>
                                                 <th>Estado</th>
                                                 <th>Acciones</th>
