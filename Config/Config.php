@@ -15,10 +15,10 @@
 ----------*/
 
 #URL development
-//const BASE_URL = "http://localhost/avenger/";
+const BASE_URL = "http://localhost/avenger/";
 
 #URL production
-const BASE_URL = "https://app.grupopaniagua.com/";
+//const BASE_URL = "https://app.grupopaniagua.com/";
 
 
 /*----------  

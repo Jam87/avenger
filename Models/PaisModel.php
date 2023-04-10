@@ -14,6 +14,16 @@ class PaisModel extends Mysql
         parent::__construct();
     }
 
+    ### COMBOX: MOSTRAR TODOS LOS PAISES ###
+    public function comboxPais()
+    {
+        $sql = "SELECT cod_pais,descripcion FROM cat_pais";
+
+        $request = $this->select_all($sql);
+        return $request;
+    }
+
+
     ### MODELO: MOSTRAR TODOS LOS PAISES ###
     public function selectPais()
     {

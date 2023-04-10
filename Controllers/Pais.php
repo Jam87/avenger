@@ -34,6 +34,16 @@ class Pais extends Controllers
     }
 
     ### CONTROLADOR: MOSTRAR TODOS LOS PAISES ###
+    function mostrarPais()
+    {
+        #Modelo comboxPais
+        $arrData = $this->model->comboxPais();
+
+        echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+  
+
     public function getPais()
     {
         #Cargo el modelo(selectBancos) 

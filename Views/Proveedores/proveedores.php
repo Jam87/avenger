@@ -60,7 +60,8 @@
                                                         <div class="card">
                                                             <div class="card-body">
 
-                                                                <form method="post" id="formUsuario" name="formUsuario">
+                                                                <form method="post" id="formProveedor" name="formProveedor">
+                                                                 <input type="hidden" id="idProveedor" name="idProveedor" value="">
 
                                                                     <!-- Nav tabs -->
                                                                     <ul class="nav nav-tabs nav-tabs-custom nav-success nav-justified mb-3" role="tablist">
@@ -279,7 +280,7 @@
                                                                                     <i class="ri-checkbox-multiple-blank-fill text-success"></i>
                                                                                 </div>
                                                                                 <div class="flex-grow-1 ms-2">
-                                                                                    <!--GRUPO 2-->
+                                                                                    <!--GRUPO 2--
                                                                                     <div class="form-group">
                                                                                         <div class="row">
                                                                                             
@@ -290,9 +291,9 @@
                                                                                                         <select class="form-select mb-3" id="comboxcontacto" name="comboxcontacto" required>
 
                                                                                                         </select>
-                                                                                                    </div><!-- Fin: password-->
+                                                                                                    </div><!-- Fin: password--
 
-                                                                                                </div><!-- Fin: apellido -->
+                                                                                                </div><!-- Fin: apellido --
                                                                                             </div>
                                                                                             <div class="col-sm-4">
                                                                                                 <div class="formulario__grupo" id="grupo__nombre">
@@ -302,7 +303,7 @@
                                                                                                         <input type="text" class="form-border" name="valor" id="valor" placeholder="valor" required>
                                                                                                     </div>
 
-                                                                                                </div><!-- Fin: nombre -->
+                                                                                                </div><!-- Fin: nombre --
                                                                                              </div>
                                                                                              
                                                                                              <div class="col-sm-4">
@@ -313,7 +314,7 @@
                                                                                                         <input type="text" class="form-border" name="extension" id="extension" placeholder="Digite la extensión" required>
                                                                                                     </div>
 
-                                                                                                </div><!-- Fin: nombre -->
+                                                                                                </div><!-- Fin: nombre --
                                                                                              </div> 
 
 
@@ -355,9 +356,11 @@
                                     <table id="table-proveedor" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Nombre </th>
-                                                <th># Cuenta</th>
-                                                <th># Contacto</th>
+                                                <th>Nombre proveedor </th>
+                                                <th>Nombre impreso</th>
+                                                <th>Número ruc</th>
+                                                <th>Persona contacto</th>
+                                                <th>Forma de pago</th>
                                                 <th>Estado</th>
                                                 <th>Acciones</th>
                                             </tr>

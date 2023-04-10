@@ -8,14 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
     language: {
       url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
     },
-    /*ajax: {
-      url: " " + base_url + "/Banco/getBancos",
+    ajax: {
+      url: " " + base_url + "/Proveedores/getProveedores",
       dataSrc: "",
-    },*/
+    },
     columns: [
-      { data: "Nombre" },
-      { data: "cuenta" },
-      { data: "contacto" },
+      { data: "nombre_proveedor" },
+      { data: "nombre_impreso" },
+      { data: "numero_ruc" },
+      { data: "persona_contacto" },
+      { data: "cod_forma_pago" },
       { data: "activo" },
       { data: "options" },
     ],
@@ -26,25 +28,112 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//*** GUARDAR NUEVO BANCO ***//
-let formBanco = document.querySelector("#formBanco");
+// --- CARGAR SELECT PAIS --- //
+let comboxPais = document.querySelector("#comboxpais");
 
-formBanco.addEventListener("submit", function (e) {
+//Cargo Todos los paises que tengo en la BD
+function cargarPais() {
+  $.ajax({
+    type: "GET",
+    url: base_url + "/Pais/mostrarPais",
+    success: function (response) {
+      //departamentos:Tengo el resultado en objeto
+      const Pais = JSON.parse(response);
+      console.log(Pais);
+      let template =
+        '<option class="form-control" selected disabled>-- Seleccione --</option>';
+
+      Pais.forEach((tipo) => {
+        template += `<option class="form-control" value="${tipo.cod_pais}">${tipo.descripcion}</option>`;
+      });
+
+      comboxPais.innerHTML = template;
+    },
+  });
+}
+
+//Llamo a la funcion
+cargarPais();
+
+// --- CARGAR SELECT FORMA DE PAGO --- //
+let comboxPago = document.querySelector("#comboxpago");
+
+//Cargo Todos los paises que tengo en la BD
+function cargarPago() {
+  $.ajax({
+    type: "GET",
+    url: base_url + "/Pago/mostrarPago",
+    success: function (response) {
+      //departamentos:Tengo el resultado en objeto
+      const Pagos = JSON.parse(response);
+ 
+      let template =
+        '<option class="form-control" selected disabled>-- Seleccione --</option>';
+
+      Pagos.forEach((tipo) => {
+        template += `<option class="form-control" value="${tipo.cod_forma_pago}">${tipo.descripcion}</option>`;
+      });
+
+      comboxPago.innerHTML = template;
+    },
+  });
+}
+
+//Llamo a la funcion
+cargarPago();
+
+// --- CARGAR SELECT FORMA DE PAGO --- //
+let comboxBancos = document.querySelector("#comboxbanco");
+
+//Cargo Todos los paises que tengo en la BD
+function cargarBancos() {
+  $.ajax({
+    type: "GET",
+    url: base_url + "/Bancos/mostrarBanco",
+    success: function (response) {
+      //departamentos:Tengo el resultado en objeto
+      const Bancos = JSON.parse(response);
+ 
+      let template =
+        '<option class="form-control" selected disabled>-- Seleccione --</option>';
+
+        Bancos.forEach((tipo) => {
+        template += `<option class="form-control" value="${tipo.cod_bancos}">${tipo.nombre_banco}</option>`;
+      });
+
+      comboxBancos.innerHTML = template;
+    },
+  });
+}
+
+//Llamo a la funcion
+cargarPago();
+
+
+//*** GUARDAR NUEVO PROVEEDOR ***//
+let formProveedor = document.querySelector("#formProveedor");
+
+formProveedor.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  let intIdBanco = document.querySelector("#idBanco").value; //Lo obtengo a la hora que voy a Editar
-  let nombre = document.querySelector("#txtName").value;
-  let listLocal = document.querySelector("#listLocal").value;
-  let listStatus = document.querySelector("#listStatus").value;
+  let intIdProveedor = document.querySelector("#idProveedor").value; //Lo obtengo a la hora que voy a Editar
 
-  if (nombre == "" || listLocal == "" || listStatus == "") {
+  let nombre = document.querySelector("#nombre").value;
+  let nombreImpreso = document.querySelector("#nprint").value;
+  let ruc = document.querySelector("#ruc").value;
+  let contacto = document.querySelector("#ncontacto").value;
+  let pais = document.querySelector("#comboxpais").value;
+  let pago = document.querySelector("#comboxpago").value;    
+  let listStatus = document.querySelector("#lStatus").value;
+
+  if (nombre == "" || nombreImpreso == "" || ruc == "" || contacto == "" || pais == "" || pago == "" || listStatus == "") {
     //Modal error Toast aviso parte superior
     Swal.fire({
       position: "top-end",
       toast: "true",
       icon: "warning",
       title: "Error!",
-      text: "Los campos nombre, estado y nacionalidad no puede esta vacio",
+      text: "Los campos que estan con * no puede esta vacio",
       icon: "warning",
       confirmButtonText: "Aceptar",
       showConfirmButton: false,
@@ -56,8 +145,8 @@ formBanco.addEventListener("submit", function (e) {
   }
 
   let request = new XMLHttpRequest();
-  let ajaxUrl = base_url + "/Bancos/setBanco";
-  let formDta = new FormData(formBanco);
+  let ajaxUrl = base_url + "/Proveedores/setProveedor";
+  let formDta = new FormData(formProveedor);
   request.open("POST", ajaxUrl, true);
   request.send(formDta);
 
@@ -66,10 +155,15 @@ formBanco.addEventListener("submit", function (e) {
       let objData = JSON.parse(request.responseText);
 
       if (objData.status) {
-        $("#modalBancos").modal("hide");
-        $("#table-bancos").DataTable().ajax.reload();
+
+       $("#table-proveedor").DataTable().ajax.reload();
+       document.querySelector("#formProveedor").reset();
 
         //Modal exito Toast aviso parte superior
+
+        /*if(objData.status == true){
+           document.querySelector('.accordion-button').className = 'collapsed';
+        }*/
 
         Swal.fire({
           position: "top-end",

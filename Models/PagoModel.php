@@ -14,6 +14,15 @@ class PagoModel extends Mysql
         parent::__construct();
     }
 
+     ### COMBOX: MOSTRAR TODOS LOS PAGOS ###
+     public function comboxPagos()
+     {
+         $sql = "SELECT cod_forma_pago,descripcion FROM cat_forma_Pago";
+ 
+         $request = $this->select_all($sql);
+         return $request;
+     }
+
     ### MODELO: MOSTRAR TODAS LAS FORMAS DE PAGO ###
     public function selectPagos()
     {

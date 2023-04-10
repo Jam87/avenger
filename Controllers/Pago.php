@@ -63,11 +63,21 @@ class Pago extends Controllers
 				</div>';
         }
 
-
         #JSON
         echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
         exit();
     }
+
+        ### CONTROLADOR: MOSTRAR FORMA DE PAGO ###
+        function mostrarPago()
+        {
+            #Modelo comboxPais
+            $arrData = $this->model->comboxPagos();
+    
+            echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+      
 
     ### CONTROLADOR: GUARDAR NUEVA FORMA DE PAGO ###
     public function setPago()
