@@ -2,7 +2,7 @@ let tableClientes;
 
 document.addEventListener("DOMContentLoaded", function () {
   //*** MOSTRAR DATOS EN DATATABLE Y TRADUCCIÓN ***//
-  tableClientes = $("#table-bancos").dataTable({
+  tableClientes = $("#table-clientes").dataTable({
     aProcessing: true,
     aServerSide: true,
     language: {
@@ -259,7 +259,7 @@ function fntEditBanco(idbanco) {
 }
 
 //*** HACER QUE EL DATATABLE FUNCIONES ***//
-$("#table-bancos").DataTable();
+$("#table-clientes").DataTable();
 
 //*** MANDAR A LLAMAR AL MODAL: Agregar una nueva marca ***//
 function openModal() {

@@ -15,16 +15,16 @@ class Cliente extends Controllers
     ### CONTROLADOR ###
     public function Cliente()
     {
-        $data['page_title'] = "Jipsafety | Bancos";
-        $data['page_name'] = "Bancos";
+        $data['page_title'] = "Jipsafety | Clientes";
+        $data['page_name'] = "Clientews";
         $data['description'] = "";
         $data['breadcrumb-item'] = "Usuarios";
         $data['breadcrumb-activo'] = "Usuario";
         $data['data-sidebar-size'] = "sm";
-        $data['page_functions_js'] = "functions_bancos.js";
+        $data['page_functions_js'] = "functions_clientes.js";
 
         #Data modal
-        $data['page_title_modal'] = "Nuevo banco";
+        $data['page_title_modal'] = "Nuevo cliente";
         $data['page_title_bold'] = "Estimado usuario";
         $data['descrption_modal1'] = "Los campos remarcados con";
         $data['descrption_modal2'] = "son necesarios.";

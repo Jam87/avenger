@@ -45,9 +45,7 @@
               <li class="nav-item">
                 <a href="<?= base_url(); ?>cliente" class="nav-link" data-key="t-calendar"> Agregar ciente </a>
               </li>
-              <li class="nav-item">
-                <a href="<?= base_url(); ?>compras" class="nav-link" data-key="t-calendar"> </a>
-              </li>
+
             </ul>
           </div>
         </li><!-- /Modulo: Clientes -->
