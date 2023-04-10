@@ -1,10 +1,10 @@
 <?php
 #Mando a llamar al modal
-getModal('contacto', $data);
+getModal('bancos', $data);
 ?>
 
 <!doctype html>
-<html lang="es" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="<?= $data['data-sidebar-size']; ?>" data-sidebar-image="none">
 
 <head>
     <title><?= $data['page_title']; ?></title>
@@ -49,13 +49,11 @@ getModal('contacto', $data);
                                 </div>
                                 <div class="card-body">
                                     <!-- Tabla de Tipo de usuario -->
-                                    <table id="table-contacto" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                    <table id="table-bancos" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Descripción</th>
-                                                <th>Teléfono</th>
-                                                <th>Correo</th>
-                                                <th>Url</th>
+                                                <th>Nombre del banco</th>
+                                                <th>Localidad</th>
                                                 <th>Estado</th>
                                                 <th>Acciones</th>
                                             </tr>
@@ -64,27 +62,22 @@ getModal('contacto', $data);
 
                                         </tbody>
                                     </table>
-
-
-
-
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
-
-
                 </div>
-
-                <!-- FOOTER -->
-                <?php MainFooter($data); ?>
             </div>
 
+            <!-- FOOTER -->
+            <?php MainFooter($data); ?>
         </div>
 
-        <!-- JAVASCRIPT -->
-        <?php MainJs($data); ?>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <?php MainJs($data); ?>
 </body>
 
 </html>
