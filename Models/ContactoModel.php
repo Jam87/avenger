@@ -15,6 +15,15 @@ class ContactoModel extends Mysql
         parent::__construct();
     }
 
+    public function comboxContacto()
+    {
+        $sql = "SELECT cod_contacto,descripcion FROM cat_contacto";
+
+        $request = $this->select_all($sql);
+        return $request;
+    }
+
+
     ### MODELO: MOSTRAR TODOS LOS CONTACTO ###
     public function selectContacto()
     {

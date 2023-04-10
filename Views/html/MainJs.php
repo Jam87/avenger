@@ -3,6 +3,72 @@
      const base_url = "<?= base_url(); ?>";
  </script>
 
+ <script>
+    
+
+
+    /////////////////////////
+
+let parameters = []
+function removeElement(event, position) {
+    event.target.parentElement.remove()
+    delete parameters[position]
+}
+
+const addJsonElement = json => {
+    parameters.push(json)
+    return parameters.length - 1
+}
+
+(function load(){
+
+  
+    const $form = document.getElementById("frmUsers") //Formulario
+
+    const $divElements = document.getElementById("divElements") //Div
+    const $btnSave = document.getElementById("btnSave") //Boton guardar
+    const $btnAdd = document.getElementById("btnAdd") //Boton Agregar
+
+    const templateElement = (data, position) => {
+        return (`
+            <button class="delete" onclick="removeElement(event, ${position})"></button>
+            <strong>User - </strong> ${data}
+        `)
+    }
+
+    //addEventListener: Escuchador que indica al navegador que este atento a la interacción del usuario. Cuando hace clic
+    $btnAdd.addEventListener("click", (event) => {
+        let index = addJsonElement({
+            Descripcion: $form.Descripcion.value,
+            Extension: $form.Extension.value,
+            comboxContact: $form.comboxContact.value
+        })
+        const $div = document.createElement("div")
+
+        $div.classList.add("notification", "is-link", "is-light", "py-2", "my-1") //Le agrego Clases
+
+        $div.innerHTML = templateElement(`${$form.comboxContact.value} ${$form.Descripcion.value} ${$form.Extension.value}`, index) //Agrego o Uso el 'templateElement', Le envio el Nombre y Apellido
+
+        $divElements.insertBefore($div, $divElements.firstChild)
+
+        $form.reset()
+    
+
+        //Contacto
+   
+        
+    })
+
+    $btnSave.addEventListener("click", (event) =>{
+        parameters = parameters.filter(el => el != null)
+        const $jsonDiv = document.getElementById("jsonDiv")
+        $jsonDiv.innerHTML = `JSON: ${JSON.stringify(parameters)}`
+        $divElements.innerHTML = ""
+        parameters = []
+    })
+})()
+ </script>
+
  <script src="<?= base_url(); ?>public/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
  <script src="<?= base_url(); ?>public/lib/simplebar/simplebar.min.js"></script>
  <script src="<?= base_url(); ?>public/lib/node-waves/waves.min.js"></script>

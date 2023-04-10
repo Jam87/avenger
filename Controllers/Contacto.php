@@ -32,6 +32,16 @@ class Contacto extends Controllers
         $this->views->getView($this, "contacto", $data);
     }
 
+    function mostrarContactos()
+    {
+        #Modelo comboxPais
+        $arrData = $this->model->comboxContacto();
+
+        echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
+
     ### CONTROLADOR: MOSTRAR TODOS CONTACTO ###
     public function getContacto()
     {

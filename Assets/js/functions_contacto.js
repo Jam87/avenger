@@ -29,6 +29,33 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
+    // --- CARGAR SELECT CONTACTO --- //
+    let comboxContacto = document.querySelector("#comboxContacto");
+
+    //Cargo Todos los paises que tengo en la BD
+    function cargarContacto() {
+      $.ajax({
+        type: "GET",
+        url: base_url + "/Contacto/mostrarContactos",
+        success: function (response) {
+          //departamentos:Tengo el resultado en objeto
+          const Contacto = JSON.parse(response);
+          console.log(Contacto);
+          let template =
+            '<option class="form-control" selected disabled>-- Seleccione --</option>';
+    
+            Contacto.forEach((tipo) => {
+            template += `<option class="form-control" value="${tipo.descripcion}">${tipo.descripcion}</option>`;
+          });
+    
+          comboxContacto.innerHTML = template;
+        },
+      });
+    }
+    
+    //Llamo a la funcion
+    cargarContacto();
+
   //*** GUARDAR NUEVO CONTACTO ***//
   let formContacto = document.querySelector('#formContacto');
   

@@ -25,7 +25,27 @@
  .btn-form{
 	background-color: #fdc50a;
  }
+
+ .data{
+	border: 1px solid #0d6efd;
+	display:none;
+ }
 /*
+div class="menu">
+  <select id="name">
+     <option value="nia"> Nia Matos</option>
+     <option value="anita">Anita Cruz</option>
+  </select>
+</div>
+
+<div class="content">
+ <div id="nia" class="data"> 
+   <p>Esta es nia</p>
+ </div>
+ <div id="anita" class="data"> 
+   <p>Esta es anita</p>
+ </div>
+</div>
   MIS ESTILOS
 */
 
