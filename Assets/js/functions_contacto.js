@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
     // --- CARGAR SELECT CONTACTO --- //
-    let comboxContacto = document.querySelector("#comboxContacto");
+   /* let comboxContacto = document.querySelector("#comboxContacto");
 
     //Cargo Todos los paises que tengo en la BD
     function cargarContacto() {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     //Llamo a la funcion
     cargarContacto();
-
+*/
   //*** GUARDAR NUEVO CONTACTO ***//
   let formContacto = document.querySelector('#formContacto');
   

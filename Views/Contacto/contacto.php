@@ -65,7 +65,130 @@ getModal('contacto', $data);
                                         </tbody>
                                     </table>
 
+                                    <div class="container">
+                                        <h1 class="title has-text-centered">Input Dinámico</h1>
+                                        <div id="jsonDiv">
 
+                                        </div>
+                                        <form action="" id="frmUsers">
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="formulario__grupo" id="grupo__apellido">
+                                                            <label for="nombre">Contacto <span class="text-danger">*</span></label>
+                                                            <!--<select class="form-select mb-3" id="comboxContacto" name="comboxContacto">
+
+                                                            </select>-->
+                                                            <select class="form-select mb-3" id="comboxContact" name="comboxContact">
+                                                                <option> --- seleccione ---</option>
+                                                                <option value="Celular claro"> Celular claro</option>
+                                                                <option value="Celular tigo">Celular tigo</option>
+                                                                <option value="Correo de trabajo">Correo de trabajo</option>
+                                                                <option value="Correo personal">Correo personal</option>
+                                                                <option value="Dirección de casa">Dirección de casa</option>
+                                                                <option value="Dirección de trabajo">Dirección de trabajo</option>
+                                                                <option value="Dirección de segundo trabajo">Dirección de segundo trabajo</option>
+                                                                <option value="Teléfono de casa">Teléfono de casa</option>
+                                                                <option value="Teléfono de trabajo">Teléfono de trabajo</option>
+                                                            </select>
+                                                        </div><!-- Fin: password-->
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="formulario__grupo" id="grupo__nombre">
+                                                            <label for="nombre">Descripción <span class="text-danger">*</span></label>
+
+                                                            <div class="formulario__grupo-input">
+                                                                <input type="text" class="form-border" name="Descripcion" id="nombre" placeholder="Teléfono, Correo, Dirección" autocomplete="off" required>
+                                                            </div>
+
+                                                        </div><!-- Fin: nombre -->
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="formulario__grupo" id="grupo__apellido">
+                                                            <label for="nombre">Extensión <span class="text-danger">*</span></label>
+
+                                                            <div class="formulario__grupo-input">
+                                                                <input type="text" class="form-border" name="Extension" id="apellido" placeholder="Número de extensión" autocomplete="off" required>
+                                                            </div>
+                                                        </div><!-- Fin: apellido -->
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div><!-- Fin: grupo1 -->
+                                            <div class="control">
+                                            <button id="btnAdd" type="button" class="btn btn-success bg-gradient waves-effect waves-light btn-sm"><i class="ri-add-fill"></i>Agregar</button>
+                                            
+                                            </div>
+                                            <div class="control">
+                                                <button id="btnSave" type="button" class="button is-info">
+                                                    Save
+                                                </button>
+                                            </div>
+
+                                        </form>
+                                        <hr>
+                                        <!--Div donde se pone el resultado-->
+                                        <div id="divElements">
+
+                                        </div>
+
+                                        <!--<div class="content2">
+                                            <div id="Celular-claro" class="data">
+                                            <div class="col-sm-4">
+                                                        <div class="formulario__grupo" id="grupo__nombre">
+                                                            <label for="nombre">Nombre <span class="text-danger">*</span></label>
+
+                                                            <div class="formulario__grupo-input">
+                                                                <input type="text" class="form-border" name="name" id="nombre" placeholder="EJ. Juan" autocomplete="off" required>
+                                                            </div>
+
+                                                        </div><!-- Fin: nombre --
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="formulario__grupo" id="grupo__apellido">
+                                                            <label for="nombre">Apellido <span class="text-danger">*</span></label>
+
+                                                            <div class="formulario__grupo-input">
+                                                                <input type="text" class="form-border" name="lastName" id="apellido" placeholder="EJ. Martinez" autocomplete="off" required>
+                                                            </div>
+                                                        </div><!-- Fin: apellido --
+                                                    </div>
+                                            </div>
+                                            <div id="Celular tigo" class="data">
+                                                <p>Esta es anita</p>
+                                            </div>
+
+                                            <div id="Correo de trabajo" class="data">
+                                                <p>Esta es nia</p>
+                                            </div>
+                                            <div id="Correo personal" class="data">
+                                                <p>Esta es anita</p>
+                                            </div>
+
+                                            <div id="Dirección de casa" class="data">
+                                                <p>Esta es nia</p>
+                                            </div>
+                                            <div id="Dirección de trabajo" class="data">
+                                                <p>Esta es anita</p>
+                                            </div>
+
+                                            <div id="Dirección de segundo trabajo" class="data">
+                                                <p>Esta es nia</p>
+                                            </div>
+                                            <div id="Teléfono de casa" class="data">
+                                                <p>Esta es anita</p>
+                                            </div>
+
+                                            <div id="Teléfono de trabajo" class="data">
+                                                <p>Esta es anita</p>
+                                            </div>
+
+                                        </div>-->
+                                    </div>
 
 
                                 </div>

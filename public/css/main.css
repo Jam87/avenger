@@ -22,6 +22,17 @@
 	font-weight: bold;
 }
 
+.notification{
+	border-bottom:1px solid #fff;
+	padding: 5px;
+}
+.estilo{
+	background: none;
+	border:0;
+	font-weight: bold;
+	color:#495057;
+}
+
  .btn-form{
 	background-color: #fdc50a;
  }

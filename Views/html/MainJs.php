@@ -3,11 +3,9 @@
      const base_url = "<?= base_url(); ?>";
  </script>
 
- <script>
+<script>
     
 
-
-    /////////////////////////
 
 let parameters = []
 function removeElement(event, position) {
@@ -31,8 +29,9 @@ const addJsonElement = json => {
 
     const templateElement = (data, position) => {
         return (`
+        <button class="delete" onclick="removeElement(event, ${position})"></button>
             <button class="delete" onclick="removeElement(event, ${position})"></button>
-            <strong>User - </strong> ${data}
+            <strong>Tipo:</strong> ${data}
         `)
     }
 
@@ -45,9 +44,13 @@ const addJsonElement = json => {
         })
         const $div = document.createElement("div")
 
-        $div.classList.add("notification", "is-link", "is-light", "py-2", "my-1") //Le agrego Clases
+        //document.querySelector('#divElements').classList.add('alert-success', 'notification'); 
+        //$div.classList.add("is-link", "is-light", "py-2", "my-1") //Le agrego Clases
 
-        $div.innerHTML = templateElement(`${$form.comboxContact.value} ${$form.Descripcion.value} ${$form.Extension.value}`, index) //Agrego o Uso el 'templateElement', Le envio el Nombre y Apellido
+        //Elemento notification dentro divElement(div)
+        $div.classList.add('alert-success', 'notification')
+
+        $div.innerHTML = templateElement(`${$form.comboxContact.value}  - <strong>Descripción:</strong>${$form.Descripcion.value} - <strong>Extensión:</strong>${$form.Extension.value}`, index) //Agrego o Uso el 'templateElement', Le envio el Nombre y Apellido
 
         $divElements.insertBefore($div, $divElements.firstChild)
 
@@ -69,7 +72,7 @@ const addJsonElement = json => {
 })()
  </script>
 
- <script src="<?= base_url(); ?>public/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="<?= base_url(); ?>public/lib/bootstrap/js/bootstrap.bundle.min.js"></scrip>
  <script src="<?= base_url(); ?>public/lib/simplebar/simplebar.min.js"></script>
  <script src="<?= base_url(); ?>public/lib/node-waves/waves.min.js"></script>
  <script src="<?= base_url(); ?>public/lib/feather-icons/feather.min.js"></script>
