@@ -16,7 +16,7 @@ class Cliente extends Controllers
     public function Cliente()
     {
         $data['page_title'] = "Jipsafety | Clientes";
-        $data['page_name'] = "Clientews";
+        $data['page_name'] = "Clientes";
         $data['description'] = "";
         $data['breadcrumb-item'] = "Usuarios";
         $data['breadcrumb-activo'] = "Usuario";
@@ -34,11 +34,11 @@ class Cliente extends Controllers
         $this->views->getView($this, "cliente", $data);
     }
 
-    ### CONTROLADOR: MOSTRAR TODOS LOS BANCOS ###
-    public function getBancos()
+    ### CONTROLADOR: MOSTRAR TODOS LOS CLIENTES ###
+    public function getClientes()
     {
         #Cargo el modelo(selectBancos) 
-        $arrData = $this->model->selectBancos();
+        $arrData = $this->model->selectClientes();
 
         for ($i = 0; $i < count($arrData); $i++) {
 
